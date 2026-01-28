@@ -1,29 +1,81 @@
-import React from 'react';
-import people from '../../assets/people.png';
-import ai from '../../assets/ai.png';
-import './header.css';
+import React, { useState } from "react";
+import { RiMenu3Line, RiCloseLine } from "react-icons/ri";
+import logo from "../../assets/logo.svg";
+import "./navbar.css";
 
-const Header = () => (
-  <div className="gpt3__header section__padding" id="home">
-    <div className="gpt3__header-content">
-      <h1 className="gradient__text">Let&apos;s Build Something amazing with GPT-3 OpenAI</h1>
-      <p>Yet bed any for travelling assistance indulgence unpleasing. Not thoughts all exercise blessing. Indulgence way everything joy alteration boisterous the attachment. Party we years to order allow asked of.</p>
+const Navbar = () => {
+  const [toggleMenu, setToggleMenu] = useState(false);
 
-      <div className="gpt3__header-content__input">
-        <input type="email" placeholder="Your Email Address" />
-        <button type="button">Get Started</button>
+  return (
+    <div className="gpt3__navbar">
+      <div className="gpt3__navbar-links">
+        <div className="gpt3__navbar-links_logo">
+          <img src={logo} alt="Brand logo" />
+        </div>
+        <div className="gpt3__navbar-links_container">
+          <p>
+            <a href="#home">Home</a>
+          </p>
+          <p>
+            <a href="#wgpt3">What is GPT3?</a>
+          </p>
+          <p>
+            <a href="#possibility">Open AI</a>
+          </p>
+          <p>
+            <a href="#features">Case Studies</a>
+          </p>
+          <p>
+            <a href="#blog">Library</a>
+          </p>
+        </div>
       </div>
-
-      <div className="gpt3__header-content__people">
-        <img src={people} />
-        <p>1,600 people requested access a visit in last 24 hours</p>
+      <div className="gpt3__navbar-sign">
+        <p>Sign in</p>
+        <button type="button">Sign up</button>
+      </div>
+      <div className="gpt3__navbar-menu">
+        {toggleMenu ? (
+          <RiCloseLine
+            color="#fff"
+            size={27}
+            onClick={() => setToggleMenu(false)}
+          />
+        ) : (
+          <RiMenu3Line
+            color="#fff"
+            size={27}
+            onClick={() => setToggleMenu(true)}
+          />
+        )}
+        {toggleMenu && (
+          <div className="gpt3__navbar-menu_container scale-up-center">
+            <div className="gpt3__navbar-menu_container-links">
+              <p>
+                <a href="#home">Home</a>
+              </p>
+              <p>
+                <a href="#wgpt3">What is GPT3?</a>
+              </p>
+              <p>
+                <a href="#possibility">Open AI</a>
+              </p>
+              <p>
+                <a href="#features">Case Studies</a>
+              </p>
+              <p>
+                <a href="#blog">Library</a>
+              </p>
+            </div>
+            <div className="gpt3__navbar-menu_container-links-sign">
+              <p>Sign in</p>
+              <button type="button">Sign up</button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
+  );
+};
 
-    <div className="gpt3__header-image">
-      <img src={ai} />
-    </div>
-  </div>
-);
-
-export default Header;
+export default Navbar;
